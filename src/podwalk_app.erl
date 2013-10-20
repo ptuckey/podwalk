@@ -28,7 +28,14 @@ stop(_State) ->
 routes() ->
     [
      {'_', [
-            {"/", podwalk_handler, []}
+            {"/", toppage_handler, []},
+            {"/bullet", bullet_handler, [{handler, stream_handler}]},
+            {"/static/[...]", cowboy_static, [
+                {directory, {priv_dir, bullet, []}},
+                {mimetypes, [
+                    {<<".js">>, [<<"application/javascript">>]}
+                ]}
+             ]}
            ]}
     ].
 
