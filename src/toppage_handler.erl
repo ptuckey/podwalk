@@ -47,7 +47,7 @@ $(document).ready(function(){
         var start = function(name, options) {
                 var bullet;
                 var open = function(){
-                        bullet = $.bullet('ws://localhost:8080/bullet', options);
+                        bullet = $.bullet('ws://' + window.location.host + '/bullet', options);
                         bullet.onopen = function(){
                                 $('#status_' + name).text('online');
                         };
